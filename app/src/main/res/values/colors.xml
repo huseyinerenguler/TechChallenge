@@ -5,4 +5,5 @@
     <color name="colorPrimaryDark">#D50000</color>
     <color name="colorAccent">#D50000</color>
     <color name="colorTextHint">#B9B9B9</color>
+    <color name="color_listview_row_order_product_detail">#1A000000</color>
 </resources>

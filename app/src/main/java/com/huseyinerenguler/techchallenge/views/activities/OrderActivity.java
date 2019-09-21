@@ -42,9 +42,6 @@ public class OrderActivity extends AppCompatActivity {
         tv_activity_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 20);
         tv_my_orders.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
         tv_logout.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
-
-        lv_orders.setDividerHeight(StaticParameters.screenWidth / 10);
-        lv_orders.setPadding(StaticParameters.screenWidth / 40, StaticParameters.screenWidth / 20, StaticParameters.screenWidth / 40, 0);
     }
 
     private void initAdapter() {

@@ -5,136 +5,198 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_date"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.20">
-
-        <TextView
-            android:id="@+id/tv_date_day"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="30"
-            android:textColor="@android:color/black"
-            android:textSize="120px"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_date_month"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Ağustos"
-            android:textColor="@android:color/black"
-            android:textSize="49px"
-            app:layout_constraintTop_toBottomOf="@id/tv_date_day" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/seperator"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/colorTextHint"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/cl_date"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.005" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_order"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="40px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/seperator"
+        android:paddingStart="27px"
+        android:paddingTop="54px"
+        android:paddingEnd="27px"
+        android:paddingBottom="54px"
+        app:layout_constraintBottom_toTopOf="@id/cl_productDetail"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_marketName"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_date"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Market 1"
-            android:textColor="@android:color/black"
-            android:textSize="49px"
-            android:textStyle="bold"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/cl_order"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.75" />
-
-        <TextView
-            android:id="@+id/tv_orderName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Şampuan 250 ml"
-            android:textColor="@android:color/black"
-            android:textSize="49px"
-            app:layout_constraintEnd_toStartOf="@id/tv_productPrice"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_marketName" />
-
-        <TextView
-            android:id="@+id/tv_productPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="25 TL"
-            android:textColor="@android:color/black"
-            android:textSize="49px"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/tv_orderName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_orderName" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="5:1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_orderName"
-            app:layout_constraintWidth_percent="0.75">
-
-            <View
-                android:id="@+id/view_productState"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="#FF0000"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
-                app:layout_constraintBottom_toBottomOf="@id/tv_productState"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_productState" />
+            app:layout_constraintWidth_percent="0.20">
 
             <TextView
-                android:id="@+id/tv_productState"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_date_day"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingStart="30px"
-                android:text="Onay Bekliyor"
-                android:textColor="#FF0000"
+                android:text="30"
+                android:textColor="@android:color/black"
+                android:textSize="120px"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_date_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ağustos"
+                android:textColor="@android:color/black"
                 android:textSize="49px"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/view_productState" />
+                app:layout_constraintTop_toBottomOf="@id/tv_date_day" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
+        <View
+            android:id="@+id/seperator"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/ic_chevron_right_black_24dp"
-            android:tint="@android:color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/colorTextHint"
+            app:layout_constraintBottom_toBottomOf="@id/cl_order"
+            app:layout_constraintStart_toEndOf="@id/cl_date"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.005" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="40px"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_productPrice"
-            app:layout_constraintWidth_percent="0.25" />
+            app:layout_constraintStart_toEndOf="@id/seperator"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_marketName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Market 1"
+                android:textColor="@android:color/black"
+                android:textSize="49px"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.75" />
+
+            <TextView
+                android:id="@+id/tv_orderName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Şampuan 250 ml"
+                android:textColor="@android:color/black"
+                android:textSize="49px"
+                app:layout_constraintEnd_toStartOf="@id/tv_productPrice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_marketName" />
+
+            <TextView
+                android:id="@+id/tv_productPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="25 TL"
+                android:textColor="@android:color/black"
+                android:textSize="49px"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/tv_orderName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_orderName" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="5:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_orderName"
+                app:layout_constraintWidth_percent="0.75">
+
+                <View
+                    android:id="@+id/view_productState"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="#FF0000"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_productState"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_productState" />
+
+                <TextView
+                    android:id="@+id/tv_productState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingStart="30px"
+                    android:text="Onay Bekliyor"
+                    android:textColor="#FF0000"
+                    android:textSize="49px"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/view_productState" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/iv_productDetail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:hapticFeedbackEnabled="true"
+                android:src="@drawable/ic_chevron_right_black_24dp"
+                android:tint="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_productPrice"
+                app:layout_constraintWidth_percent="0.25" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_productDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="54px"
+        android:background="@color/color_listview_row_order_product_detail"
+        android:paddingStart="27px"
+        android:paddingTop="27px"
+        android:paddingEnd="27px"
+        android:paddingBottom="27px"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.75">
+
+            <TextView
+                android:id="@+id/tv_orderDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Şampuan 250 ml"
+                android:textColor="@android:color/black"
+                android:textSize="49px"
+                app:layout_constraintEnd_toStartOf="@id/tv_summaryPrice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_summaryPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="25 TL"
+                android:textColor="@android:color/black"
+                android:textSize="49px"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

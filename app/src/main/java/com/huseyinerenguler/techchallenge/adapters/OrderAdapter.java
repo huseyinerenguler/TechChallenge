@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -49,7 +50,7 @@ public class OrderAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
 
         if (convertView == null) {
 
@@ -58,6 +59,7 @@ public class OrderAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.cl_date = convertView.findViewById(R.id.cl_date);
             viewHolder.cl_order = convertView.findViewById(R.id.cl_order);
+            viewHolder.cl_productDetail = convertView.findViewById(R.id.cl_productDetail);
             viewHolder.view_productState = convertView.findViewById(R.id.view_productState);
             viewHolder.tv_date_day = convertView.findViewById(R.id.tv_date_day);
             viewHolder.tv_date_month = convertView.findViewById(R.id.tv_date_month);
@@ -65,9 +67,26 @@ public class OrderAdapter extends BaseAdapter {
             viewHolder.tv_orderName = convertView.findViewById(R.id.tv_orderName);
             viewHolder.tv_productPrice = convertView.findViewById(R.id.tv_productPrice);
             viewHolder.tv_productState = convertView.findViewById(R.id.tv_productState);
+            viewHolder.tv_orderDetail = convertView.findViewById(R.id.tv_orderDetail);
+            viewHolder.tv_summaryPrice = convertView.findViewById(R.id.tv_summaryPrice);
+            viewHolder.iv_productDetail = convertView.findViewById(R.id.iv_productDetail);
 
-            viewHolder.cl_order.setPadding(StaticParameters.screenWidth / 27, 0, StaticParameters.screenWidth / 40, 0);
+            ((ConstraintLayout) viewHolder.cl_date.getParent()).setPadding(
+                    StaticParameters.screenWidth / 40,
+                    StaticParameters.screenWidth / 20,
+                    StaticParameters.screenWidth / 40,
+                    StaticParameters.screenWidth / 20);
+            viewHolder.cl_productDetail.setPadding(
+                    StaticParameters.screenWidth / 40,
+                    StaticParameters.screenWidth / 40,
+                    StaticParameters.screenWidth / 40,
+                    StaticParameters.screenWidth / 40);
+            viewHolder.cl_order.setPadding(StaticParameters.screenWidth / 27, 0, 0, 0);
             viewHolder.tv_productState.setPadding(StaticParameters.screenWidth / 36, 0, 0, 0);
+
+            ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) viewHolder.cl_productDetail.getLayoutParams();
+            layoutParams.topMargin = StaticParameters.screenWidth / 40;
+            viewHolder.cl_productDetail.setLayoutParams(layoutParams);
 
             viewHolder.tv_date_day.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 9);
             viewHolder.tv_date_month.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
@@ -75,11 +94,23 @@ public class OrderAdapter extends BaseAdapter {
             viewHolder.tv_orderName.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
             viewHolder.tv_productPrice.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
             viewHolder.tv_productState.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
+            viewHolder.tv_orderDetail.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
+            viewHolder.tv_summaryPrice.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
 
             convertView.setTag(viewHolder);
 
         } else
             viewHolder = (ViewHolder) convertView.getTag();
+
+        viewHolder.iv_productDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (viewHolder.cl_productDetail.getVisibility() == View.VISIBLE)
+                    viewHolder.cl_productDetail.setVisibility(View.GONE);
+                else
+                    viewHolder.cl_productDetail.setVisibility(View.VISIBLE);
+            }
+        });
 
         viewHolder.cl_date.setVisibility(View.VISIBLE);
 
@@ -98,6 +129,8 @@ public class OrderAdapter extends BaseAdapter {
         viewHolder.tv_marketName.setText(StaticParameters.orders.get(position).getMarketName());
         viewHolder.tv_orderName.setText(StaticParameters.orders.get(position).getOrderName());
         viewHolder.tv_productPrice.setText(String.format(context.getString(R.string.listview_row_order_product_price), StaticParameters.orders.get(position).getProductPrice()));
+        viewHolder.tv_orderDetail.setText(StaticParameters.orders.get(position).getProductDetail().getOrderDetail());
+        viewHolder.tv_summaryPrice.setText(String.format(context.getString(R.string.listview_row_order_product_price), StaticParameters.orders.get(position).getProductDetail().getSummaryPrice()));
 
         String productState = StaticParameters.orders.get(position).getProductState();
         viewHolder.tv_productState.setText(productState);
@@ -126,6 +159,7 @@ public class OrderAdapter extends BaseAdapter {
     private static class ViewHolder {
         private ConstraintLayout cl_date;
         private ConstraintLayout cl_order;
+        private ConstraintLayout cl_productDetail;
         private View view_productState;
         private TextView tv_date_day;
         private TextView tv_date_month;
@@ -133,6 +167,9 @@ public class OrderAdapter extends BaseAdapter {
         private TextView tv_orderName;
         private TextView tv_productPrice;
         private TextView tv_productState;
+        private TextView tv_orderDetail;
+        private TextView tv_summaryPrice;
+        private ImageView iv_productDetail;
     }
 
 }
