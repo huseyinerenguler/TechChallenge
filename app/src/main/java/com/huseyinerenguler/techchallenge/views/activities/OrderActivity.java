@@ -9,12 +9,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.huseyinerenguler.techchallenge.R;
+import com.huseyinerenguler.techchallenge.adapters.OrderAdapter;
 import com.huseyinerenguler.techchallenge.managers.OrderManager;
 import com.huseyinerenguler.techchallenge.utils.StaticParameters;
 
 public class OrderActivity extends AppCompatActivity {
 
     private ListView lv_orders;
+    private OrderAdapter orderAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class OrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order);
 
         initUI();
+        initAdapter();
         fetchOrders();
     }
 
@@ -35,6 +38,15 @@ public class OrderActivity extends AppCompatActivity {
         tv_activity_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 20);
         tv_my_orders.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
         tv_logout.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
+
+        lv_orders.setDividerHeight(StaticParameters.screenWidth / 10);
+        lv_orders.setPadding(StaticParameters.screenWidth / 40, StaticParameters.screenWidth / 20, StaticParameters.screenWidth / 40, 0);
+    }
+
+    private void initAdapter() {
+
+        orderAdapter = new OrderAdapter(this);
+        lv_orders.setAdapter(orderAdapter);
     }
 
     public void onClick(View view) {
@@ -53,7 +65,7 @@ public class OrderActivity extends AppCompatActivity {
         new OrderManager(new OrderManager.onActionListener() {
             @Override
             public void onNotifyDataSetChanged() {
-                // TODO
+                orderAdapter.notifyDataSetChanged();
             }
         }).fetchOrders();
     }

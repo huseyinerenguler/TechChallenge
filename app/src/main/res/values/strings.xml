@@ -13,4 +13,6 @@
     <string name="validate_wrong_username_password">Kullanıcı adı veya parola hatalı</string>
     <string name="validate_empty_username_password">Kullanıcı adı veya parola boş bırakılamaz</string>
 
+    <string name="listview_row_order_product_price">%1$.2f TL</string>
+
 </resources>

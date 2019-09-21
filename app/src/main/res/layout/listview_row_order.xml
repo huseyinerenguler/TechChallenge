@@ -8,12 +8,10 @@
         android:id="@+id/cl_date"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingStart="27px"
-        android:paddingEnd="27px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.24">
+        app:layout_constraintWidth_percent="0.20">
 
         <TextView
             android:id="@+id/tv_date_day"
@@ -48,10 +46,10 @@
         app:layout_constraintWidth_percent="0.005" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_order"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingStart="40px"
-        android:paddingEnd="27px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/seperator"
         app:layout_constraintTop_toTopOf="parent">
@@ -75,13 +73,13 @@
             android:text="Şampuan 250 ml"
             android:textColor="@android:color/black"
             android:textSize="49px"
+            app:layout_constraintEnd_toStartOf="@id/tv_productPrice"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_marketName"
-            app:layout_constraintWidth_percent="0.75" />
+            app:layout_constraintTop_toBottomOf="@id/tv_marketName" />
 
         <TextView
             android:id="@+id/tv_productPrice"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:gravity="center"
             android:text="25 TL"
@@ -90,7 +88,6 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/tv_orderName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_orderName"
             app:layout_constraintTop_toTopOf="@id/tv_orderName" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -106,6 +103,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FF0000"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
                 app:layout_constraintBottom_toBottomOf="@id/tv_productState"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintStart_toStartOf="parent"

@@ -32,6 +32,12 @@ public class OrderManager extends AsyncTask<Void, Void, Void> {
     }
 
     @Override
+    protected void onProgressUpdate(Void... values) {
+        listener.onNotifyDataSetChanged();
+        super.onProgressUpdate(values);
+    }
+
+    @Override
     protected Void doInBackground(Void... voids) {
 
         final String URL = "https://kariyertechchallenge.mockable.io/";
@@ -54,7 +60,7 @@ public class OrderManager extends AsyncTask<Void, Void, Void> {
                         jsonArray.getJSONObject(i).getJSONObject("productDetail").getDouble("summaryPrice")));
 
                 StaticParameters.orders.add(order);
-                listener.onNotifyDataSetChanged();
+                publishProgress();
             }
         } catch (Exception e) {
         }
