@@ -15,4 +15,8 @@
 
     <string name="listview_row_order_product_price">%1$.2f TL</string>
 
+    <string name="dialog_logout_question">Çıkmak istediğine emin misin?</string>
+    <string name="dialog_logout_submit">Çıkış Yap</string>
+    <string name="dialog_logout_cancel">Vazgeç</string>
+
 </resources>

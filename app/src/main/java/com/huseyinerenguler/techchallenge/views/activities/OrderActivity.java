@@ -2,6 +2,9 @@ package com.huseyinerenguler.techchallenge.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 
 import com.huseyinerenguler.techchallenge.R;
 import com.huseyinerenguler.techchallenge.adapters.OrderAdapter;
+import com.huseyinerenguler.techchallenge.managers.DialogManager;
 import com.huseyinerenguler.techchallenge.managers.OrderManager;
 import com.huseyinerenguler.techchallenge.utils.StaticParameters;
 
@@ -52,12 +56,30 @@ public class OrderActivity extends AppCompatActivity {
     public void onClick(View view) {
 
         if (view.getId() == R.id.tv_logout) {
-            logout();
+            showLogoutDialog();
         }
     }
 
+    private void showLogoutDialog() {
+
+        Dialog dialog_logout = new DialogManager().initLogoutDialog(new DialogManager.onDialogListener() {
+            @Override
+            public void onAction() {
+                logout();
+            }
+        }, this);
+
+        dialog_logout.show();
+    }
+
     private void logout() {
-        // TODO show dialog
+
+        SharedPreferences.Editor editor = getSharedPreferences(StaticParameters.SHARED_PREFERENCES_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(StaticParameters.SHARED_PREFERENCES_KEY_REMEMBER_ME, false);
+        editor.apply();
+
+        startActivity(new Intent(OrderActivity.this, LoginActivity.class));
+        finish();
     }
 
     private void fetchOrders() {
