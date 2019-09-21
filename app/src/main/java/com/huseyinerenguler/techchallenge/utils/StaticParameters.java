@@ -6,6 +6,8 @@ import android.view.WindowManager;
 public class StaticParameters {
 
     public static int screenWidth = 0;
+    public static String SHARED_PREFERENCES_NAME = "sharedPreferences";
+    public static String SHARED_PREFERENCES_KEY_REMEMBER_ME = "rememberMe";
 
     public static void init(WindowManager windowManager) {
 

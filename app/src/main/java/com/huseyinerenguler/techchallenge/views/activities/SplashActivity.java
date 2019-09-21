@@ -18,12 +18,28 @@ public class SplashActivity extends AppCompatActivity {
         StaticParameters.init(getWindowManager());
 
         if (StaticParameters.screenWidth > 0)
+            checkLoginStatus();
+    }
+
+    private void checkLoginStatus() {
+
+        boolean remember_me = getSharedPreferences(StaticParameters.SHARED_PREFERENCES_NAME, MODE_PRIVATE).getBoolean(StaticParameters.SHARED_PREFERENCES_KEY_REMEMBER_ME, false);
+
+        if (remember_me)
+            startOrderActivity();
+        else
             startLoginActivity();
     }
 
     private void startLoginActivity() {
 
         startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+        finish();
+    }
+
+    private void startOrderActivity() {
+
+        startActivity(new Intent(SplashActivity.this, OrderActivity.class));
         finish();
     }
 

@@ -67,7 +67,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
-                    android:hint="Kullanıcı Adı"
+                    android:hint="@string/activity_login_username"
                     android:inputType="text"
                     android:maxLines="1"
                     android:textColor="@android:color/black"
@@ -113,7 +113,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
-                    android:hint="Şifre"
+                    android:hint="@string/activity_login_password"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="@android:color/black"
@@ -142,7 +142,7 @@
                 android:layout_height="0dp"
                 android:checked="false"
                 android:switchPadding="20px"
-                android:text="Beni Hatırla"
+                android:text="@string/activity_login_remember_me"
                 android:textColor="@android:color/black"
                 android:textSize="49px"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -167,7 +167,9 @@
                 android:layout_height="0dp"
                 android:background="@drawable/background_login_submit"
                 android:gravity="center"
-                android:text="GİRİŞ"
+                android:hapticFeedbackEnabled="true"
+                android:onClick="onClick"
+                android:text="@string/activity_login_submit"
                 android:textColor="@android:color/white"
                 android:textSize="54px"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -190,7 +192,7 @@
                 android:id="@+id/pb_validate"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:visibility="gone"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="0.70"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -200,9 +202,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Kullanıcı adı veya parola hatalı"
                 android:textColor="@color/colorPrimary"
-                android:textSize="49px" />
+                android:textSize="49px"
+                android:visibility="invisible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
