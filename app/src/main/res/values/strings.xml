@@ -6,6 +6,10 @@
     <string name="activity_login_remember_me">Beni Hatırla</string>
     <string name="activity_login_submit">GİRİŞ</string>
 
+    <string name="activity_order_activity_title">MARKETİM</string>
+    <string name="activity_order_my_orders">Siparişlerim</string>
+    <string name="activity_order_logout">Çıkış Yap</string>
+
     <string name="validate_wrong_username_password">Kullanıcı adı veya parola hatalı</string>
     <string name="validate_empty_username_password">Kullanıcı adı veya parola boş bırakılamaz</string>
 

@@ -165,7 +165,7 @@
                 android:id="@+id/tv_submit"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@drawable/background_login_submit"
+                android:background="@drawable/background_solid_with_radius"
                 android:gravity="center"
                 android:hapticFeedbackEnabled="true"
                 android:onClick="onClick"

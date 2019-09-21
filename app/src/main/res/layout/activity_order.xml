@@ -4,6 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".views.activities.OrderActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintDimensionRatio="6:1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_activity_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/activity_order_activity_title"
+            android:textColor="@android:color/white"
+            android:textSize="54px"
+            android:textStyle="bold" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ListView
+        android:id="@+id/lv_orders"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:divider="@null"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/cl_bottom_bar"
+        app:layout_constraintTop_toBottomOf="@id/cl_action_bar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="5:1">
+
+        <TextView
+            android:id="@+id/tv_my_orders"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/background_stroke_with_radius"
+            android:gravity="center"
+            android:text="@string/activity_order_my_orders"
+            android:textColor="@color/colorPrimary"
+            android:textSize="49px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_logout"
+            app:layout_constraintHeight_percent="0.60"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.44" />
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/background_solid_with_radius"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="onClick"
+            android:text="@string/activity_order_logout"
+            android:textColor="@android:color/white"
+            android:textSize="49px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.60"
+            app:layout_constraintStart_toEndOf="@id/tv_my_orders"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.44" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
