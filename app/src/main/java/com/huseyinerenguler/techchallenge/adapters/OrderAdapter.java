@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -69,8 +68,8 @@ public class OrderAdapter extends BaseAdapter {
             viewHolder.tv_productState = convertView.findViewById(R.id.tv_productState);
             viewHolder.tv_orderDetail = convertView.findViewById(R.id.tv_orderDetail);
             viewHolder.tv_summaryPrice = convertView.findViewById(R.id.tv_summaryPrice);
-            viewHolder.iv_productDetail = convertView.findViewById(R.id.iv_productDetail);
 
+            // In order to create the same UI in all screen sizes, size adjustments are made according to the screen width.
             ((ConstraintLayout) viewHolder.cl_date.getParent()).setPadding(
                     StaticParameters.screenWidth / 40,
                     StaticParameters.screenWidth / 20,
@@ -102,7 +101,8 @@ public class OrderAdapter extends BaseAdapter {
         } else
             viewHolder = (ViewHolder) convertView.getTag();
 
-        viewHolder.iv_productDetail.setOnClickListener(new View.OnClickListener() {
+        // When clicked an order, the order details are shown or hidden.
+        convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (viewHolder.cl_productDetail.getVisibility() == View.VISIBLE)
@@ -112,13 +112,14 @@ public class OrderAdapter extends BaseAdapter {
             }
         });
 
+        // Birbirini takip eden siparişler eğer aynı tarihe sahipse, sadece 1 tanesinin tarihi gösterilir, diğerleri gizlenir.
         viewHolder.cl_date.setVisibility(View.VISIBLE);
-
         if (position > 0)
             if (StaticParameters.orders.get(position).getDate().equals(StaticParameters.orders.get(position - 1).getDate()))
                 if (StaticParameters.orders.get(position).getMonth().equals(StaticParameters.orders.get(position - 1).getMonth()))
                     viewHolder.cl_date.setVisibility(View.INVISIBLE);
 
+        // Month which is a number, is converted to text.
         if (viewHolder.cl_date.getVisibility() == View.VISIBLE) {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.MONTH, Integer.valueOf(StaticParameters.orders.get(position).getMonth()) - 1);
@@ -126,6 +127,7 @@ public class OrderAdapter extends BaseAdapter {
             viewHolder.tv_date_day.setText(StaticParameters.orders.get(position).getDate());
         }
 
+        // Other order informations are added to the relevant fields.
         viewHolder.tv_marketName.setText(StaticParameters.orders.get(position).getMarketName());
         viewHolder.tv_orderName.setText(StaticParameters.orders.get(position).getOrderName());
         viewHolder.tv_productPrice.setText(String.format(context.getString(R.string.listview_row_order_product_price), StaticParameters.orders.get(position).getProductPrice()));
@@ -135,6 +137,7 @@ public class OrderAdapter extends BaseAdapter {
         String productState = StaticParameters.orders.get(position).getProductState();
         viewHolder.tv_productState.setText(productState);
 
+        // Depending on the state of the product, state section is colored.
         if (productState.equalsIgnoreCase("Yolda")) {
             ViewCompat.setBackgroundTintList(viewHolder.view_productState, ColorStateList.valueOf(Color.argb(255, 0, 170, 0)));
             viewHolder.tv_productState.setTextColor(Color.argb(255, 0, 170, 0));
@@ -169,7 +172,6 @@ public class OrderAdapter extends BaseAdapter {
         private TextView tv_productState;
         private TextView tv_orderDetail;
         private TextView tv_summaryPrice;
-        private ImageView iv_productDetail;
     }
 
 }

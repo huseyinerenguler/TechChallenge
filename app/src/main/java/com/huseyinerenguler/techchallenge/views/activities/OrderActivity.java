@@ -39,6 +39,7 @@ public class OrderActivity extends AppCompatActivity {
         TextView tv_my_orders = findViewById(R.id.tv_my_orders);
         TextView tv_logout = findViewById(R.id.tv_logout);
 
+        // In order to create the same UI in all screen sizes, size adjustments are made according to the screen width.
         tv_activity_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 20);
         tv_my_orders.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
         tv_logout.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
@@ -62,6 +63,7 @@ public class OrderActivity extends AppCompatActivity {
         Dialog dialog_logout = new DialogManager().initLogoutDialog(new DialogManager.onDialogListener() {
             @Override
             public void onAction() {
+                // if the user presses the logout button in dialog, this function will work .
                 logout();
             }
         }, this);
@@ -71,10 +73,12 @@ public class OrderActivity extends AppCompatActivity {
 
     private void logout() {
 
+        // Disabling auto login.
         SharedPreferences.Editor editor = getSharedPreferences(StaticParameters.SHARED_PREFERENCES_NAME, MODE_PRIVATE).edit();
         editor.putBoolean(StaticParameters.SHARED_PREFERENCES_KEY_REMEMBER_ME, false);
         editor.apply();
 
+        // Redirect to login screen.
         startActivity(new Intent(OrderActivity.this, LoginActivity.class));
         finish();
     }
@@ -84,6 +88,7 @@ public class OrderActivity extends AppCompatActivity {
         new OrderManager(new OrderManager.onActionListener() {
             @Override
             public void onNotifyDataSetChanged() {
+                // A new order has been added to our list and we are refreshing it.
                 orderAdapter.notifyDataSetChanged();
             }
         }).fetchOrders();

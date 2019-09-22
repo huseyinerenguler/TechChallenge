@@ -20,6 +20,7 @@ public class StaticParameters {
         StaticParameters.initScreenWidth(windowManager);
     }
 
+    // Gets the pixel width of the screen.
     private static void initScreenWidth(WindowManager windowManager) {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();

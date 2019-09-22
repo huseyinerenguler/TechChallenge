@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         tv_validate = findViewById(R.id.tv_validate);
         pb_validate = findViewById(R.id.pb_validate);
 
+        // In order to create the same UI in all screen sizes, size adjustments are made according to the screen width.
         et_username.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 20);
         et_password.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 20);
         switch_remember_me.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);

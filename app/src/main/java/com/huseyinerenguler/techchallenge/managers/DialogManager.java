@@ -28,6 +28,7 @@ public class DialogManager {
         TextView tv_cancel = dialog_logout.findViewById(R.id.tv_cancel);
         TextView tv_submit = dialog_logout.findViewById(R.id.tv_submit);
 
+        // In order to create the same UI in all screen sizes, size adjustments are made according to the screen width.
         ((ConstraintLayout) tv_question.getParent()).setLayoutParams(
                 new FrameLayout.LayoutParams((int) (StaticParameters.screenWidth * 0.85), ViewGroup.LayoutParams.WRAP_CONTENT));
 
@@ -35,6 +36,7 @@ public class DialogManager {
         tv_cancel.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
         tv_submit.setTextSize(TypedValue.COMPLEX_UNIT_PX, StaticParameters.screenWidth / 22);
 
+        // If the user presses the cancel button, it closes itself.
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,9 +44,11 @@ public class DialogManager {
             }
         });
 
+        // If the user presses the logout button, it sends a notification to the activity.
         tv_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog_logout.dismiss();
                 listener.onAction();
             }
         });

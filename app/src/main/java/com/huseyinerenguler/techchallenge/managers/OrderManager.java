@@ -33,6 +33,7 @@ public class OrderManager extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onProgressUpdate(Void... values) {
+        // A new order has been added to our list and we are refreshing it.
         listener.onNotifyDataSetChanged();
         super.onProgressUpdate(values);
     }
@@ -60,7 +61,7 @@ public class OrderManager extends AsyncTask<Void, Void, Void> {
                         jsonArray.getJSONObject(i).getJSONObject("productDetail").getDouble("summaryPrice")));
 
                 StaticParameters.orders.add(order);
-                publishProgress();
+                publishProgress(); // A new order has been added to our list and we are refreshing it.
             }
         } catch (Exception e) {
         }
